@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61075204282178690}
   - component: {fileID: 114450467260173528}
   - component: {fileID: 50569473347676228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0005825162, y: 0.03261736}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1000
-  damage: 1
+  damage: 2
 --- !u!212 &212262720276869176
 SpriteRenderer:
   m_ObjectHideFlags: 1
