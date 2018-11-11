@@ -16,7 +16,7 @@ TagManager:
   - Actor
   - Weapon
   - Projectile
-  - 
+  - Environment
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 4030017107
+    locked: 0
+  - name: Enemy
+    uniqueID: 2998287313
+    locked: 0
+  - name: Player
+    uniqueID: 409856987
     locked: 0

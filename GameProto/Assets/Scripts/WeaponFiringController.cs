@@ -74,6 +74,8 @@ public class WeaponFiringController : MonoBehaviour {
             setFiring();
         }
 
+
+        
         //Handles swapping of sprites and firing for single and automatic shot weapons
         if (Input.GetButton("Fire1") && !waitIsRunning)
         {
@@ -82,8 +84,8 @@ public class WeaponFiringController : MonoBehaviour {
             if (!isFiring)
             {
 
-                WeaponSpriteRenderer.sprite = playerSprites[3];
-                PlayerSpriteRenderer.sprite = playerSprites[1];
+                //WeaponSpriteRenderer.sprite = playerSprites[3];
+                //PlayerSpriteRenderer.sprite = playerSprites[1];
                 fire();                
             }
             else
@@ -103,8 +105,9 @@ public class WeaponFiringController : MonoBehaviour {
         
         isFiring = true;
         //if the game object has an audio source, it will play it when this method is executed
-        if (GetComponent<AudioSource>() != null)
+        if (GetComponent<AudioSource>() != null || GetComponentInChildren<ParticleSystem>() != null)
         {
+            GetComponentInChildren<ParticleSystem>().Play();
             GetComponent<AudioSource>().Play();
         }
 
