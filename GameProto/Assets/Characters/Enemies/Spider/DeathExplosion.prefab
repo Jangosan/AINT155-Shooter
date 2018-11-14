@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4365346418610848}
   - component: {fileID: 198530550257382644}
   - component: {fileID: 199037959162411222}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 82499369605562334}
   - component: {fileID: 58629207028727026}
   - component: {fileID: 114347239578274196}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DeathExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4672815857647504}
   - component: {fileID: 198956806528538540}
   - component: {fileID: 199850308835768548}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

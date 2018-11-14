@@ -13,12 +13,12 @@ TagManager:
   - UI
   - 
   - 
-  - Actor
+  - Player
   - Weapon
   - Projectile
   - Environment
-  - 
-  - 
+  - Pickup
+  - Enemy
   - 
   - 
   - 

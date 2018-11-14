@@ -11,8 +11,14 @@ public class HealthSystem : MonoBehaviour
 {
 
     public int health = 10;
+    private int maxHealth;
     public UnityEvent onDie;
     public OnDamagedEvent onDamaged;
+
+    private void Start()
+    {
+        maxHealth = health;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -24,6 +30,19 @@ public class HealthSystem : MonoBehaviour
         {
             onDie.Invoke();
         }
+    }
+
+    public void pickupRestoreHealth(int amount)
+    {   
+        if ((health + amount) <= maxHealth)
+        {
+            health += amount;
+        }
+        else
+        {
+            health = maxHealth;
+        }
+
     }
 }
 
