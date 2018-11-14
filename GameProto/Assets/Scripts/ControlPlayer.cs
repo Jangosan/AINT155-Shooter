@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class ControlPlayer : MonoBehaviour {
 
+
+
+    public delegate void UpdateHealth(int newHealth);
+    public static event UpdateHealth OnHealthUpdate;
+
+    //update the health bar with the amount of health the player has
+    public void sendHealthData(int health)
+    {
+        //if the value of health isn't null, trigger the OnHealthUpdate event
+        if (OnHealthUpdate != null)
+        {
+            
+            OnHealthUpdate(health);
+        }
+    }
     //GLOBAL VARIABLES//
 
     //The multiplier for the total speed of the character
@@ -53,11 +68,6 @@ public class ControlPlayer : MonoBehaviour {
         //rotate the character to the angle determined by the previous step
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
 
-    }
-
-    //update at fixed intervals
-    private void FixedUpdate()
-    {
         //stop movement if there is no input
         if (Input.GetAxisRaw("Horizontal") == 0 & Input.GetAxisRaw("Vertical") == 0)
         {
@@ -70,6 +80,9 @@ public class ControlPlayer : MonoBehaviour {
 
         //set player velocity to the the input value * the movement speed
         player.velocity = moveVelocity;
+
     }
+
+    
 
 }

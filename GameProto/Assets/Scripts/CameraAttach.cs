@@ -15,12 +15,8 @@ public class CameraAttach : MonoBehaviour {
         
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        
-    }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 currentPos = transform.position;
        
