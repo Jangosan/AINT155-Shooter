@@ -114,25 +114,10 @@ GameObject:
   - component: {fileID: 114183131236973378}
   - component: {fileID: 95650858187734724}
   - component: {fileID: 114734993253797212}
+  - component: {fileID: 114854932526598500}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1584433941542092
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4224138973246108}
-  - component: {fileID: 108064626778619588}
-  m_Layer: 0
-  m_Name: Flashlight
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,19 +167,6 @@ Transform:
   m_Father: {fileID: 4355033662694336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!4 &4224138973246108
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584433941542092}
-  m_LocalRotation: {x: -0.6268233, y: -0, z: -0, w: 0.7791615}
-  m_LocalPosition: {x: -0.010087069, y: 0.18814868, z: -0.299}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4948193594893724}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -77.632, y: 0, z: 0}
 --- !u!4 &4332409934005764
 Transform:
   m_ObjectHideFlags: 1
@@ -223,7 +195,7 @@ Transform:
   - {fileID: 4332409934005764}
   - {fileID: 4939961463191922}
   m_Father: {fileID: 4948193594893724}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4411006137718518
 Transform:
@@ -258,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1475966429361338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.01, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4948193594893724}
@@ -289,7 +261,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4678110314909182}
-  - {fileID: 4224138973246108}
   - {fileID: 4355033662694336}
   m_Father: {fileID: 4885098106876870}
   m_RootOrder: 0
@@ -442,42 +413,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!108 &108064626778619588
-Light:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584433941542092}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 13.7
-  m_Range: 5.63
-  m_SpotAngle: 51.4
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 1
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!114 &114183131236973378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,7 +451,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  healthRemaining: 0
+--- !u!114 &114854932526598500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475966429361338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198c68f9ba657b5439c6b3dbf459ebcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverCanvas: {fileID: 0}
+  playerControlScript: {fileID: 114554654935791472}
+  weaponScript: []
 --- !u!114 &114869532274144052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -533,8 +481,8 @@ MonoBehaviour:
   onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114183131236973378}
-        m_MethodName: Die
+      - m_Target: {fileID: 114854932526598500}
+        m_MethodName: enableGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -596,9 +544,9 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4678110314909182}
   fireTime: 0.5
   singleShot: 1
-  clipMax: 6
-  initAmmo: 20
-  ammoMax: 0
+  clipMax: 8
+  initAmmo: 24
+  ammoMax: 80
   currentClip: 0
   currentReserve: 0
   playerSprites:

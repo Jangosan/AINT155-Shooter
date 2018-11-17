@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114137543581791514}
   - component: {fileID: 58692676222926974}
   - component: {fileID: 114606611530700922}
+  - component: {fileID: 114357029463167924}
   m_Layer: 13
   m_Name: NerveSpider
   m_TagString: Enemy
@@ -119,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203211086674550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9634494, y: 2.8982625, z: 0}
+  m_LocalPosition: {x: 3.6198714, y: -0.58229685, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4073679224616614}
@@ -205,7 +206,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.21
+  m_Radius: 4.1
 --- !u!82 &82477742475208240
 AudioSource:
   m_ObjectHideFlags: 1
@@ -344,7 +345,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -398,6 +399,17 @@ MonoBehaviour:
   rotSmoothing: 40
   adjustmentAngle: 90
   debugVelocity: {x: 0, y: 0}
+--- !u!114 &114357029463167924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203211086674550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024737f8ed137604abb07789363604d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114604876779177856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,6 +531,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 82477742475208240}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114357029463167924}
+        m_MethodName: assignTargetOnEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
