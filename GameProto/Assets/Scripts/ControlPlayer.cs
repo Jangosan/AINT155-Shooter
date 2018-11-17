@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class ControlPlayer : MonoBehaviour {
 
-
-
-    public delegate void UpdateHealth(int newHealth);
-    public static event UpdateHealth OnHealthUpdate;
-
-    //update the health bar with the amount of health the player has
-    public void sendHealthData(int health)
-    {
-        //if the value of health isn't null, trigger the OnHealthUpdate event
-        if (OnHealthUpdate != null)
-        {
-            
-            OnHealthUpdate(health);
-        }
-    }
     //GLOBAL VARIABLES//
 
     //The multiplier for the total speed of the character
@@ -82,7 +67,5 @@ public class ControlPlayer : MonoBehaviour {
         player.velocity = moveVelocity;
 
     }
-
-    
 
 }

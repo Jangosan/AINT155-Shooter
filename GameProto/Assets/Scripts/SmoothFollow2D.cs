@@ -4,10 +4,13 @@ using UnityEngine;
 public class SmoothFollow2D : MonoBehaviour
 {
 
+    //the target of the script
     public Transform target;
 
+    //the rigidbody of the character this script is attached to
     public Rigidbody2D character;
 
+    //
     public float moveSpeed = 5.0f;
 
     public float rotSmoothing = 5.0f;
@@ -18,9 +21,8 @@ public class SmoothFollow2D : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         character = gameObject.GetComponent<Rigidbody2D>();
-        
+
     }
 
     void FixedUpdate()
@@ -45,5 +47,11 @@ public class SmoothFollow2D : MonoBehaviour
  
 
         }
+    }
+    
+    public void AssignTarget(Transform targetTrans)
+    {
+        target = targetTrans;
+        
     }
 }

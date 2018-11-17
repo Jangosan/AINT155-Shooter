@@ -11,7 +11,7 @@ public class HealthSystem : MonoBehaviour
 {
 
     //the current health
-    private int health = 10;
+    public int health = 10;
 
     //the maximum health value
     public int maxHealth;
@@ -27,8 +27,20 @@ public class HealthSystem : MonoBehaviour
     {
         //sets the health of the character to the maxHealth value
         health = maxHealth;
+
+        //sets the initial value for the health bar if the character has one
+        gameObject.SendMessage("sendHealthData", maxHealth, SendMessageOptions.DontRequireReceiver);
     }
 
+    //sends the health information of this gameobject back to the sender that triggered the method
+    public void returnHealth(GameObject sender)
+    {
+
+        int[] healthInfo = new int[2];
+        healthInfo[0] = health;
+        healthInfo[1] = maxHealth;
+        sender.SendMessage("setCurrentHealth", healthInfo, SendMessageOptions.DontRequireReceiver);
+    }
 
     //used to subtract the damage amount from health
     public void TakeDamage(int damage)
@@ -46,8 +58,8 @@ public class HealthSystem : MonoBehaviour
             onDie.Invoke();
         }
         
-        //updates the ui if the character is the player
-        updatePlayerHealth();
+        //updates the health
+        updateHealth();
     }
 
     public void pickupRestoreHealth(int amount)
@@ -62,18 +74,15 @@ public class HealthSystem : MonoBehaviour
             health = maxHealth;
         }
 
-        //updates the ui if the character is the player, although non player characters can't typically interact with game objects on this layer
-        updatePlayerHealth();
+       
+        updateHealth();
 
     }
 
-    public void updatePlayerHealth()
-    {
-        //update the health if the game object is the player
-        if (gameObject == GameObject.FindGameObjectWithTag("Player"))
-        {
-            gameObject.SendMessage("sendHealthData", health);
-        }
+    //update the health displayed on the health bar
+    public void updateHealth()
+    {       
+            gameObject.SendMessage("sendHealthData", health, SendMessageOptions.DontRequireReceiver);              
     }
 }
 

@@ -4,25 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIScript : MonoBehaviour {
 
-    //the health bar slider in the ui
-    public Slider healthBar;
+    ////the health bar slider in the ui
+    //public Slider healthBar;
 
-    //the amount of health to subtract
-    public int healthToSub;
+    ////the amount of health to subtract
+    //public int healthRemaining;
 
-    private void OnEnable()
-    {
-        ControlPlayer.OnHealthUpdate += UpdateHealthBar;
+    //private void OnEnable()
+    //{
+    //    UpdateHealthBar.OnHealthUpdate += changeHealthBar;
         
-    }
-    private void OnDisable()
-    {
-        ControlPlayer.OnHealthUpdate -= UpdateHealthBar;
+    //}
+    //private void OnDisable()
+    //{
+    //    UpdateHealthBar.OnHealthUpdate -= changeHealthBar;
         
-    }
-    private void UpdateHealthBar(int health)
-    {
-        healthToSub = health;
-        healthBar.value = health;
-    }
+    //}
+    //private void changeHealthBar(int health)
+    //{
+    //    healthRemaining = health;
+    //    healthBar.value = health;
+    //}
+
 }

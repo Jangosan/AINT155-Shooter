@@ -9,6 +9,7 @@ public class SpiderAttack : MonoBehaviour {
     public int damage;
     public UnityEvent onExplode;
     public float explosionLifetime;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject player;
