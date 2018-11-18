@@ -10,22 +10,23 @@ public class SmoothFollow2D : MonoBehaviour
     //the rigidbody of the character this script is attached to
     public Rigidbody2D character;
 
-    //
+    //the movement speed
     public float moveSpeed = 5.0f;
 
+    //
     public float rotSmoothing = 5.0f;
 
     public float adjustmentAngle = 0.0f;
 
-    public Vector2 debugVelocity;
-
+    //get the rigidbody of the gameobject
     private void Start()
     {
         character = gameObject.GetComponent<Rigidbody2D>();
 
     }
 
-    void FixedUpdate()
+    //on each update the transform will move and rotate towards the target
+    void Update()
     {
         if (target != null)
         {
@@ -42,16 +43,27 @@ public class SmoothFollow2D : MonoBehaviour
 
            
 
-            debugVelocity = character.velocity;
+           
            
  
 
         }
     }
     
+    //sets the target for the gameobject to follow
     public void AssignTarget(Transform targetTrans)
     {
         target = targetTrans;
+        
+    }
+
+    //send the information of the target to the sender if this gameobject has a target
+    public void getHasTarget(GameObject sender)
+    {
+        if (target != null)
+        {
+            sender.SendMessage("getAllyTarget", target);
+        }
         
     }
 }
