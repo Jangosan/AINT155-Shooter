@@ -537,8 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   waitIsRunning: 0
-  projectileCount: 6
-  weaponSpread: 5
+  projectileCount: 1
+  weaponSpread: 0
   bulletPrefab: {fileID: 1072768933441656, guid: 4c667dcdf570b624fab7b855a28d93b3,
     type: 2}
   bulletSpawn: {fileID: 4678110314909182}

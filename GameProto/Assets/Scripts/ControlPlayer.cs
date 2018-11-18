@@ -30,7 +30,7 @@ public class ControlPlayer : MonoBehaviour {
         
 	}
 	
-	// Update is called once per frame
+	//Based off framerate for smoother animation of the player
 	void Update () {        
 
         //Creates a vector based off the inputs

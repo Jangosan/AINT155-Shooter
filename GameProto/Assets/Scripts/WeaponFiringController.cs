@@ -100,7 +100,7 @@ public class WeaponFiringController : MonoBehaviour {
             currentClip = clipMax;
             currentReserve = ammoAmount - currentClip;
         }
-        //1
+        
         else
         {
             currentClip = clipMax;
@@ -110,12 +110,12 @@ public class WeaponFiringController : MonoBehaviour {
         updateUIAmmo();
     }
 
-
-	private void Update () {
+    //Based off fixed update for better responsiveness 
+	private void FixedUpdate() {
 
         if (Input.GetButton("Reload") && currentClip < clipMax)
         {
-            //2
+            
             loadClip(currentReserve + currentClip);
         }
 
@@ -189,14 +189,14 @@ public class WeaponFiringController : MonoBehaviour {
                 //to evenly spread the projectiles, half are rotated less than 0 degrees and half are rotated more than 0 degrees
                 if (i < (projectileCount - (projectileCount * 0.5)))
                 {
-                    rotationAdjust = -Random.Range(0, weaponSpread);
+                    rotationAdjust = -Random.Range(0, weaponSpread);                
                     angleAdjust = Quaternion.Euler(0, 0, rotationAdjust);
-                }
+            }
                 else
                 {
                     rotationAdjust = Random.Range(0, weaponSpread);
                     angleAdjust = Quaternion.Euler(0, 0, rotationAdjust);
-                }
+            }
 
                 angleAdjust = bulletSpawn.rotation * angleAdjust;
                 Instantiate(bulletPrefab, bulletSpawn.position, angleAdjust);

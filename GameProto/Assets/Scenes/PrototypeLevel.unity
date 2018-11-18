@@ -3251,16 +3251,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114734993253797212, guid: 1a1862d1e598c35499668ef8d635164a,
-        type: 2}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 559212660}
-    - target: {fileID: 114854932526598500, guid: 1a1862d1e598c35499668ef8d635164a,
-        type: 2}
-      propertyPath: gameOverCanvas
-      value: 
-      objectReference: {fileID: 1341082432}
     - target: {fileID: 114869569421718988, guid: 1a1862d1e598c35499668ef8d635164a,
         type: 2}
       propertyPath: ammoClip
@@ -3276,6 +3266,16 @@ Prefab:
       propertyPath: weapName
       value: 
       objectReference: {fileID: 1907817426}
+    - target: {fileID: 114854932526598500, guid: 1a1862d1e598c35499668ef8d635164a,
+        type: 2}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1341082432}
+    - target: {fileID: 114734993253797212, guid: 1a1862d1e598c35499668ef8d635164a,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 559212660}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a1862d1e598c35499668ef8d635164a, type: 2}
   m_IsPrefabParent: 0

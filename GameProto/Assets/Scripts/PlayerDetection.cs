@@ -28,9 +28,9 @@ public class PlayerDetection : MonoBehaviour {
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (hasTarget == false)
+        if (hasTarget == false && parentCharacter != null)
         {
-            if (target.transform == player.transform && parentCharacter != null)
+            if (target.transform == player.transform)
             {
                 parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
                 hasTarget = true;
