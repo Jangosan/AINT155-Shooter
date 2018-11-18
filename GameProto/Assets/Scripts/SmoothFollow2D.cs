@@ -57,13 +57,4 @@ public class SmoothFollow2D : MonoBehaviour
         
     }
 
-    //send the information of the target to the sender if this gameobject has a target
-    public void getHasTarget(GameObject sender)
-    {
-        if (target != null)
-        {
-            sender.SendMessage("getAllyTarget", target);
-        }
-        
-    }
 }

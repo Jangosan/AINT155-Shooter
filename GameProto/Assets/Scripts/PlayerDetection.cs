@@ -28,14 +28,18 @@ public class PlayerDetection : MonoBehaviour {
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
-
-        if (target.transform == player.transform && parentCharacter != null && hasTarget == false)
-        {         
-            parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
-            hasTarget = true;
-        }        
+        if (hasTarget == false)
+        {
+            if (target.transform == player.transform && parentCharacter != null)
+            {
+                parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
+                hasTarget = true;
+            }
+        }
+           
     }
 
+    //Enemies can alert other enemies if they can see this one
     private void OnTriggerExit2D(Collider2D target)
     {
         if (target.transform.tag == "Enemy" && hasTarget == true)
@@ -43,6 +47,7 @@ public class PlayerDetection : MonoBehaviour {
             target.SendMessage("AssignTarget", player.transform, SendMessageOptions.DontRequireReceiver);
         }
     }
+
 
     //For event dependent target assigning instead of based off the detection range
     public void assignTargetOnEvent()
@@ -70,13 +75,5 @@ public class PlayerDetection : MonoBehaviour {
             }
 
         }
-    }
-
-    //if an enemy sees another that has a target, they will also acquire the same target
-    private void getAllyTarget(Transform target)
-    {
-        print("getAllyTarget Triggered" + " " + target);
-        parentCharacter.SendMessage("AssignTarget", target);
-        hasTarget = true;
     }
 }

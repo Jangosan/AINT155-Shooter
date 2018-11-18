@@ -50,7 +50,12 @@ public class HealthSystem : MonoBehaviour
         health -= damage;
 
         //invoke the onDamaged event with the value of health
-        onDamaged.Invoke(health);
+        if ( health > 0)
+        {
+            onDamaged.Invoke(health);
+        }
+        
+        
 
         //destroys the game object if the health drops below 1
         if (health < 1)
