@@ -27,23 +27,16 @@ public class SpawnerUpdate : MonoBehaviour {
     public float maxSpawnDist;
     
 
-    
-
-
-
-
-
-    /*When the script starts, the spawnPrefab method is invoked once per numberToSpawn (for exampele, if numberToSpawn is 2 the method will invoke twice)
+    /*When this event is triggered, the spawnPrefab method is invoked once per numberToSpawn (for exampele, if numberToSpawn is 2 the method will invoke twice)
     the method is invoked instantly the first time and then at repeating intervals, the length of which is determined by the spawnDelay variable*/
-    void Start() {
-        
+    private void beginSpawn()
+    {
         for (int i = 0; i < numberToSpawn; i++)
         {
             InvokeRepeating("spawnPrefab", 0, spawnDelay);
         }
-        
-	}
 
+    }
     //gets the totalPrefabs value based off the number of children the spawner has
     private void Update()
     {
@@ -53,7 +46,7 @@ public class SpawnerUpdate : MonoBehaviour {
     /*Instantiate the prefab at a random position within the maxSpawnDist with the adjustmentAngle applied to rotation.
     Won't do anything if the number of spawned enemies is greater than or equal to the max*/
     private void spawnPrefab() {
-
+        
         Vector3 spawnPosition;
 
         spawnPosition.x = transform.position.x + Random.Range(-maxSpawnDist, maxSpawnDist);

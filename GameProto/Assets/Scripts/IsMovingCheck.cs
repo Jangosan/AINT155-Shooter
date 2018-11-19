@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class IsMovingCheck : MonoBehaviour {
 
+    //The animator of the game object
     private Animator moveAnim;
-    public Rigidbody2D objRgdBdy;
-    public Vector2 velocity;
 
- 
-	
+    //The rigidbody of the game object
+    public Rigidbody2D objRgdBdy;
+
+	//Assign the animator and rigidbody
 	void Start () {
         moveAnim = GetComponent<Animator>();
-        objRgdBdy = GetComponent<Rigidbody2D>();
-        
+        objRgdBdy = GetComponent<Rigidbody2D>();        
 	}
 	
 	
+    //If the rigidbody is moving then the isMoving parameter = true
 	void Update () {
-        velocity = objRgdBdy.velocity;
+        
 		if(objRgdBdy.velocity.magnitude > 0)
         {
             moveAnim.SetBool("isMoving", true);

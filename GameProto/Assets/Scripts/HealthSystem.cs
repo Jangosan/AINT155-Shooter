@@ -21,7 +21,8 @@ public class HealthSystem : MonoBehaviour
 
     //Event that is triggered when the character is damaged
     public OnDamagedEvent onDamaged;
-   
+
+    private bool dead = false;
 
     private void Start()
     {
@@ -54,12 +55,13 @@ public class HealthSystem : MonoBehaviour
         {
             onDamaged.Invoke(health);
         }
-        
-        
 
+
+        
         //destroys the game object if the health drops below 1
-        if (health < 1)
+        if (health < 1 && dead == false)
         {
+            dead = true;
             onDie.Invoke();
         }
         
@@ -67,6 +69,8 @@ public class HealthSystem : MonoBehaviour
         updateHealth();
     }
 
+
+    //Handles the restoration of health from pickups
     public void pickupRestoreHealth(int amount)
     {   
         //Can't restore health above the maximum amount for the character

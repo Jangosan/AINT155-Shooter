@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  explosionLifespan: 0.44
   target: {fileID: 0}
 --- !u!198 &198077959524259238
 ParticleSystem:
@@ -3996,7 +3995,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 15
+    maxLights: 1
   TrailModule:
     enabled: 0
     mode: 0

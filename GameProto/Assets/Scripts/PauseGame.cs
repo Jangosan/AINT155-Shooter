@@ -2,33 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOver : MonoBehaviour {
+public class PauseGame : MonoBehaviour {
 
-
-    public Canvas gameOverCanvas;
     public ControlPlayer playerControlScript;
     public WeaponFiringController[] weaponScript;
 
+
+    //locate the scripts that have to be stopped
     private void Start()
     {
         Time.timeScale = 1;
-       
-
-        
-
-        gameOverCanvas.enabled = false;
-
         weaponScript = new WeaponFiringController[gameObject.transform.childCount];
 
-        for(int i = 0; i < gameObject.transform.childCount; i++)
-        {            
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
             print(gameObject.transform.GetChild(i).GetComponent<WeaponFiringController>());
             weaponScript[i] = gameObject.transform.GetChild(i).GetComponent<WeaponFiringController>();
-            
+
         }
-        
     }
-    public void enableGameOver()
+
+
+    //Stop game operation
+    public void stopGame()
     {
 
         Time.timeScale = 0;
@@ -39,7 +35,18 @@ public class GameOver : MonoBehaviour {
         {
             weaponScript[i].enabled = false;
         }
-        
-        gameOverCanvas.enabled = true;
+    }
+
+    //Start game operation
+    public void startGame()
+    {
+        Time.timeScale = 1;
+
+        playerControlScript.enabled = true;
+
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            weaponScript[i].enabled = true;
+        }
     }
 }

@@ -13,13 +13,14 @@ public class ControlPlayer : MonoBehaviour {
     private Vector2 input;
 
     //The total movement velocity of the character
-    public Vector2 moveVelocity;
+    private Vector2 moveVelocity;
 
     //Store the rigidbody component in a variable
-    Rigidbody2D player;
+    public Rigidbody2D player;
 
-
+    //the two dimensional position of the mouse
     public Vector2 mousePos;
+
     //PROCEDURES//
 
 	// Use this for initialization

@@ -91,7 +91,9 @@ GameObject:
   - component: {fileID: 114256976233342546}
   - component: {fileID: 114645604950640082}
   - component: {fileID: 58360491878416166}
-  - component: {fileID: 114641285362252436}
+  - component: {fileID: 114329714081104764}
+  - component: {fileID: 114889595381876592}
+  - component: {fileID: 114069366029565076}
   m_Layer: 13
   m_Name: SpiderSpawner
   m_TagString: Enemy
@@ -123,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812192786250276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.29, y: -0.14, z: 0}
+  m_LocalPosition: {x: -0.94, y: -17.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224494870251546488}
@@ -144,7 +146,22 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.38
+--- !u!114 &114069366029565076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812192786250276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb5f41e51fd204448601e48586c723d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 1988339032346426, guid: ccdfc5bbff5c51d46b0157e36df89e14,
+    type: 2}
+  spawnInterval: 0
+  adjustmentAngle: 0
 --- !u!114 &114075099851535770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +313,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114329714081104764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812192786250276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882a36144ab8a094496727ce863c56a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingUI: {fileID: 223724162316510586}
 --- !u!114 &114572787448001958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,24 +336,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc63fc913dad17447b61fff5e51417da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxToSpawn: 10
-  numberToSpawn: 1
+  maxToSpawn: 5
+  numberToSpawn: 2
   spawnDelay: 2
   adjustmentAngle: 0
   prefabToSpawn: {fileID: 1203211086674550, guid: 6c10a39f6794dd049beb4f43590d8b27,
     type: 2}
   maxSpawnDist: 1
---- !u!114 &114641285362252436
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812192786250276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024737f8ed137604abb07789363604d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114645604950640082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +355,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 114265161143455820}
+--- !u!114 &114889595381876592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812192786250276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024737f8ed137604abb07789363604d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114982162883444238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,12 +393,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114069366029565076}
+        m_MethodName: spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114641285362252436}
+      - m_Target: {fileID: 114329714081104764}
+        m_MethodName: unhideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114889595381876592}
         m_MethodName: assignTargetForChildren
         m_Mode: 1
         m_Arguments:

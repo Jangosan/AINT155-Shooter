@@ -25,6 +25,25 @@ public class PlayerDetection : MonoBehaviour {
 
     }
 
+    //For use with spawners. When children get damaged the spawner sends a message to the children to target the player
+    public void assignTargetForChildren()
+    {
+        InvokeRepeating("loopChildTargetAssign", 0, Time.deltaTime);
+    }
+
+    private void loopChildTargetAssign()
+    {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            if (gameObject.transform.GetChild(i).tag == "Enemy")
+            {
+                gameObject.transform.GetChild(i).SendMessage("AssignTarget", player.transform);
+
+            }
+
+        }
+    }
+
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
@@ -57,23 +76,5 @@ public class PlayerDetection : MonoBehaviour {
     }
 
 
-    //For use with spawners. When children get damaged the spawner sends a message to the children to target the player
-    public void assignTargetForChildren()
-    {
-        InvokeRepeating("loopChildTargetAssign", 0, Time.deltaTime);
-    }
-
-    private void loopChildTargetAssign()
-    {
-        for (int i = 0; i < gameObject.transform.childCount; i++)
-        {
-            if (gameObject.transform.GetChild(i).tag == "Enemy")
-            {
-                print(gameObject.transform.GetChild(i).name);
-                gameObject.transform.GetChild(i).SendMessage("AssignTarget", player.transform);
-                hasTarget = true;
-            }
-
-        }
-    }
+    
 }

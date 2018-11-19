@@ -10,12 +10,9 @@ public class CameraAttach : MonoBehaviour {
     //Used to smooth the movement of the camera
     public float cameraSmooth = 40.0f;
 
-    // Use this for initialization
-    void Start () {
-        
-	}
+   
 	
-
+    //Moves the camera towards the target over time
     private void Update()
     {
         Vector3 currentPos = transform.position;

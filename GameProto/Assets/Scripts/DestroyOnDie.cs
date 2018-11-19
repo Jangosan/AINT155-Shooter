@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DestroyOnDie : MonoBehaviour
 {
+
+    //If true, child objects with the enemy tag will be detached when this game object dies
     public bool preserveChildrenOnDeath = false;
 
     
@@ -21,8 +23,11 @@ public class DestroyOnDie : MonoBehaviour
                     gameObject.transform.GetChild(i).parent = null;
                 }
             }
+            //A delay that allows the children to be unparented properly before the object is destroyed 
             Invoke("Destroy", 0.1f);
         }
+
+        //Standard operation for most enemies
         else
         {
             Destroy();
@@ -31,6 +36,7 @@ public class DestroyOnDie : MonoBehaviour
         
     }
 
+    //Destroy the game object
     private void Destroy()
     {
         Destroy(gameObject);
