@@ -648,6 +648,16 @@ Prefab:
       propertyPath: m_Name
       value: SpiderSpawner (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
   m_IsPrefabParent: 0
@@ -3952,6 +3962,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
   m_IsPrefabParent: 0
@@ -5171,6 +5191,16 @@ Prefab:
       propertyPath: m_Name
       value: SpiderSpawner (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
   m_IsPrefabParent: 0
@@ -5432,6 +5462,16 @@ Prefab:
     - target: {fileID: 1812192786250276, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
       propertyPath: m_Name
       value: SpiderSpawner (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
@@ -10661,6 +10701,16 @@ Prefab:
       propertyPath: m_Name
       value: SpiderSpawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
   m_IsPrefabParent: 0
@@ -11713,6 +11763,16 @@ Prefab:
       propertyPath: m_Name
       value: SpiderSpawner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
   m_IsPrefabParent: 0
@@ -11865,6 +11925,16 @@ Prefab:
     - target: {fileID: 1812192786250276, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
       propertyPath: m_Name
       value: SpiderSpawner (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
