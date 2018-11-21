@@ -26,7 +26,7 @@ public class PauseGame : MonoBehaviour {
     //Stop game operation
     public void stopGame()
     {
-
+        Cursor.visible = true;
         Time.timeScale = 0;
 
         playerControlScript.enabled = false;
@@ -40,6 +40,7 @@ public class PauseGame : MonoBehaviour {
     //Start game operation
     public void startGame()
     {
+        Cursor.visible = false;
         Time.timeScale = 1;
 
         playerControlScript.enabled = true;

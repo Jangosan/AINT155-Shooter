@@ -21,18 +21,23 @@ public class ControlPlayer : MonoBehaviour {
     //the two dimensional position of the mouse
     public Vector2 mousePos;
 
+    public float rotationSmoothing = 40.0f;
+
+    public float adjustmentAngle = 90;
+
     //PROCEDURES//
 
 	// Use this for initialization
 	void Start () {
-        
+
+        Cursor.visible = false;
         //Identify the rigidbody component to be stored
         player = gameObject.GetComponent<Rigidbody2D>();     
         
 	}
 	
 	//Based off framerate for smoother animation of the player
-	void Update () {        
+	void FixedUpdate () {        
 
         //Creates a vector based off the inputs
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -51,9 +56,41 @@ public class ControlPlayer : MonoBehaviour {
         //calculate the arc tangent of x and y of the distance and convert to degrees 
         float angle = Mathf.Atan2(distance.x, distance.y) * Mathf.Rad2Deg;
 
-        //rotate the character to the angle determined by the previous step
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
 
+
+
+
+        float rotationSpeed = Time.deltaTime * rotationSmoothing;
+
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+
+
+        float angleZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+
+        Vector3 rotationInDegrees = new Vector3();
+
+        /*
+         * SET THE X AND Y TO ZERO
+         * We don't want to rotate our GameObject on X and Y, so we set them to zero
+         */
+        rotationInDegrees.x = 0;
+        rotationInDegrees.y = 0;
+
+        /*
+         * SET THE Z ANGLE TO OUR NEW ANGLE AND ADD IN OUR ADJUSTMENT
+         * here we set the Z angle to our new "angleZ" and add our pulic variable "adjustmentAngle"
+         * this means we can set the correct facing angle in the editor!
+         */
+        rotationInDegrees.z = angleZ + adjustmentAngle;
+
+        Quaternion rotationInRadians = Quaternion.Euler(rotationInDegrees);
+
+
+        //rotate the character to the angle determined by the previous step
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotationInRadians, rotationSpeed);
+        
         //stop movement if there is no input
         if (Input.GetAxisRaw("Horizontal") == 0 & Input.GetAxisRaw("Vertical") == 0)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponFiringController : MonoBehaviour {
 
@@ -52,6 +53,8 @@ public class WeaponFiringController : MonoBehaviour {
     //The current amount of amnunition in reserve
     public int currentReserve;
 
+    public Text reloadText;
+
 
     //ANIMATION VARIABLES----------------------------------------
 
@@ -64,7 +67,7 @@ public class WeaponFiringController : MonoBehaviour {
     //stores the sprite renderer component of the weapon
     SpriteRenderer WeaponSpriteRenderer;
 
-   
+    
     
     private void Start () {
        
@@ -76,7 +79,8 @@ public class WeaponFiringController : MonoBehaviour {
         player = transform.parent.gameObject;
         PlayerSpriteRenderer = player.GetComponent<SpriteRenderer>();
 
-
+        reloadText.enabled = false;
+        
         //1
         loadClip(initAmmo);
 
@@ -121,11 +125,13 @@ public class WeaponFiringController : MonoBehaviour {
 
         if (currentClip == 0)
         {
+            reloadText.enabled = true;
             return;
             
         }
         else
         {
+            reloadText.enabled = false;
             //makes sure the correct sprite is being used for the player and weapon
             if (PlayerSpriteRenderer.sprite == playerSprites[1])
             {
