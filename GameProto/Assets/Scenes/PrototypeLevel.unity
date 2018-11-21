@@ -5490,6 +5490,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 114084339451251246, guid: 6c10a39f6794dd049beb4f43590d8b27,
+        type: 2}
+      propertyPath: mask.m_Bits
+      value: 2304
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c10a39f6794dd049beb4f43590d8b27, type: 2}
   m_IsPrefabParent: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
 
+    public LayerMask mask;
+
     //The parent gameObject of the gameObject this is attached to
     private GameObject parentCharacter;
 
@@ -22,6 +24,7 @@ public class PlayerDetection : MonoBehaviour {
             parentCharacter = gameObject.transform.parent.gameObject;
         }
         
+
 
     }
 
@@ -44,6 +47,7 @@ public class PlayerDetection : MonoBehaviour {
         }
     }
 
+
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
@@ -51,8 +55,15 @@ public class PlayerDetection : MonoBehaviour {
         {
             if (target.transform == player.transform)
             {
-                parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
-                hasTarget = true;
+                RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position, 100, mask);
+                print(findPlayer.collider);
+                if(findPlayer.collider.gameObject == player)
+                {
+                    parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
+                        
+                    hasTarget = true;
+                }
+                
             }
         }
            
