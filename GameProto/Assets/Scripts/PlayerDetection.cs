@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour {
 
+    public float losePlayerTime = 2.5f;
+
+    //The layers for the raycast to interact with
     public LayerMask mask;
 
     //The parent gameObject of the gameObject this is attached to
@@ -15,6 +18,11 @@ public class PlayerDetection : MonoBehaviour {
     //Has the character already got a target
     private bool hasTarget = false;
 
+    //The collider of the player
+    private Collider2D playerCollider;
+
+    
+
     //Assigns the values for the two above variables
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -23,15 +31,37 @@ public class PlayerDetection : MonoBehaviour {
         {
             parentCharacter = gameObject.transform.parent.gameObject;
         }
+
+        playerCollider = player.GetComponent<Collider2D>();
+
+
+    }
+
+    private void Update()
+    {
         
+        //Raycast to see if player is still visible
+        if (hasTarget == true)
+        {
+
+            RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, 5, mask);
+            Debug.DrawRay(transform.position, player.transform.position - transform.position);
+            if(findPlayer.collider != playerCollider)
+            {
+                hasTarget = false;
+                StartCoroutine(loseTargetTimer());
+            }
+            
+            
 
 
+        }
     }
 
     //For use with spawners. When children get damaged the spawner sends a message to the children to target the player
     public void assignTargetForChildren()
     {
-        InvokeRepeating("loopChildTargetAssign", 0, Time.deltaTime);
+        Invoke("loopChildTargetAssign", 0);
     }
 
     private void loopChildTargetAssign()
@@ -47,38 +77,65 @@ public class PlayerDetection : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay2D(Collider2D target)
+    {
+       
+        rayCastDetect(target);
+    }
 
+
+    //Once triggered, will raycast towards the player and if there is nothing blocking the raycast, the target will be assigned;
+    private void rayCastDetect(Collider2D target)
+    {
+        if (hasTarget == false && parentCharacter != null)
+        {            
+            if (target.transform == player.transform)
+            {               
+                RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, 5, mask);
+                Debug.DrawRay(transform.position, player.transform.position - transform.position);
+               
+                if (findPlayer.collider == playerCollider)
+                {                    
+                    
+                    parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
+                    hasTarget = true;
+                    
+                }
+
+            }
+        }
+    }
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (hasTarget == false && parentCharacter != null)
-        {
-            if (target.transform == player.transform)
-            {
-                RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position, 100, mask);
-                print(findPlayer.collider);
-                if(findPlayer.collider.gameObject == player)
-                {
-                    parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
-                        
-                    hasTarget = true;
-                }
-                
-            }
-        }
-           
+        
+        rayCastDetect(target);
     }
 
+    
     //Enemies can alert other enemies if they can see this one
     private void OnTriggerExit2D(Collider2D target)
     {
+        
         if (target.transform.tag == "Enemy" && hasTarget == true)
         {
             target.SendMessage("AssignTarget", player.transform, SendMessageOptions.DontRequireReceiver);
         }
+
     }
 
+    
 
+    IEnumerator loseTargetTimer()
+    {
+        
+        yield return new WaitForSeconds(losePlayerTime);
+        if (!hasTarget)
+        {
+            
+            parentCharacter.SendMessage("UnassignTarget");
+        }
+    }
     //For event dependent target assigning instead of based off the detection range
     public void assignTargetOnEvent()
     {      

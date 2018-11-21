@@ -9,6 +9,9 @@ public class SpawnerDetection : MonoBehaviour {
 
     public Transform[] spawnerList;
 
+    private bool active = false;
+
+
     //Assigns the values for the two above variables
     void Start()
     {
@@ -16,7 +19,12 @@ public class SpawnerDetection : MonoBehaviour {
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        active = false;    
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform == player.transform)
         {   
@@ -25,12 +33,17 @@ public class SpawnerDetection : MonoBehaviour {
                 {
                     if (spawnerList[i] != null)
                     {
-                        spawnerList[i].SendMessage("beginSpawn");
+                        if (!active)
+                        {
+                            spawnerList[i].SendMessage("beginSpawn");
+                        }
+                        
                         spawnerList[i].SendMessage("assignTargetForChildren", player, SendMessageOptions.DontRequireReceiver);
                     }
-                   
+
+                    
                 }
-            
+            active = true;
         }
     }
 }

@@ -4937,12 +4937,17 @@ Prefab:
     - target: {fileID: 114554654935791472, guid: 1a1862d1e598c35499668ef8d635164a,
         type: 2}
       propertyPath: rotationSmoothing
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114554654935791472, guid: 1a1862d1e598c35499668ef8d635164a,
         type: 2}
       propertyPath: adjustmentAngle
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 50438477255861166, guid: 1a1862d1e598c35499668ef8d635164a,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a1862d1e598c35499668ef8d635164a, type: 2}
@@ -5489,11 +5494,6 @@ Prefab:
     - target: {fileID: 4256513640173996, guid: 6c10a39f6794dd049beb4f43590d8b27, type: 2}
       propertyPath: m_RootOrder
       value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114084339451251246, guid: 6c10a39f6794dd049beb4f43590d8b27,
-        type: 2}
-      propertyPath: mask.m_Bits
-      value: 2304
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c10a39f6794dd049beb4f43590d8b27, type: 2}
