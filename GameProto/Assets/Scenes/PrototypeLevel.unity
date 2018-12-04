@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 43727885}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: WallsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 415558714}
   - component: {fileID: 415558713}
   - component: {fileID: 415558715}
-  m_Layer: 11
+  m_Layer: 17
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5747,7 +5747,7 @@ GameObject:
   - component: {fileID: 1686190701}
   - component: {fileID: 1686190703}
   - component: {fileID: 1686190702}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
