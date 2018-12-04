@@ -48,6 +48,7 @@ public class PlayerDetection : MonoBehaviour {
             Debug.DrawRay(transform.position, player.transform.position - transform.position);
             if(findPlayer.collider != playerCollider)
             {
+                print("line of sight broken");
                 hasTarget = false;
                 StartCoroutine(loseTargetTimer());
             }
@@ -79,7 +80,7 @@ public class PlayerDetection : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D target)
     {
-       
+
         rayCastDetect(target);
     }
 
@@ -87,8 +88,10 @@ public class PlayerDetection : MonoBehaviour {
     //Once triggered, will raycast towards the player and if there is nothing blocking the raycast, the target will be assigned;
     private void rayCastDetect(Collider2D target)
     {
+        print(hasTarget + " " + parentCharacter);
         if (hasTarget == false && parentCharacter != null)
-        {            
+        {
+            print(hasTarget + ", " + target);
             if (target.transform == player.transform)
             {               
                 RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, 5, mask);
@@ -108,11 +111,11 @@ public class PlayerDetection : MonoBehaviour {
     //When the collider is entered, if the target is the player, the script sends a message to the parent to run the AssignTarget method with the player as the target
     private void OnTriggerEnter2D(Collider2D target)
     {
-        
+
         rayCastDetect(target);
     }
 
-    
+
     //Enemies can alert other enemies if they can see this one
     private void OnTriggerExit2D(Collider2D target)
     {

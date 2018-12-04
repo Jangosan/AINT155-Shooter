@@ -61,6 +61,6 @@ public class SmoothFollow2D : MonoBehaviour
     {
         Transform blankTransform = null;
         target = blankTransform;
-        print("Target for " + gameObject.name + " should be unassigned" + target);
+        print("Target for " + gameObject.name + " should be unassigned" + "(" + target);
     }
 }
