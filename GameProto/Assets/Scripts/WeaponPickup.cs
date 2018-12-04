@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public GameObject weapon;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SendMessage("equipWeapon", weapon);
+            Destroy(gameObject);
+        }
+
+    }
 }

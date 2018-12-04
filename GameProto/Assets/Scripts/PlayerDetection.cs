@@ -16,7 +16,7 @@ public class PlayerDetection : MonoBehaviour {
     private GameObject player;
 
     //Has the character already got a target
-    private bool hasTarget = false;
+    public bool hasTarget = false;
 
     //The collider of the player
     private Collider2D playerCollider;
@@ -48,7 +48,7 @@ public class PlayerDetection : MonoBehaviour {
             Debug.DrawRay(transform.position, player.transform.position - transform.position);
             if(findPlayer.collider != playerCollider)
             {
-                print("line of sight broken");
+                
                 hasTarget = false;
                 StartCoroutine(loseTargetTimer());
             }
@@ -88,12 +88,13 @@ public class PlayerDetection : MonoBehaviour {
     //Once triggered, will raycast towards the player and if there is nothing blocking the raycast, the target will be assigned;
     private void rayCastDetect(Collider2D target)
     {
-        print(hasTarget + " " + parentCharacter);
+        //If the character doesn't have a target and has a parent character
         if (hasTarget == false && parentCharacter != null)
         {
-            print(hasTarget + ", " + target);
+            //if the target transform is the player transform 
             if (target.transform == player.transform)
-            {               
+            {   
+                //cast a ray in the direction of the player and if it collides with the player set the target to the player
                 RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, 5, mask);
                 Debug.DrawRay(transform.position, player.transform.position - transform.position);
                

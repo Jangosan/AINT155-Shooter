@@ -46,7 +46,7 @@ public class SmoothFollow2D : MonoBehaviour
 
 
 
-            print(target);
+            
         }
     }
     
@@ -54,13 +54,13 @@ public class SmoothFollow2D : MonoBehaviour
     public void AssignTarget(Transform targetTrans)
     {
         target = targetTrans;
-        print("Target for " + gameObject.name + " should be assigned");
+        
     }
 
     public void UnassignTarget()
     {
         Transform blankTransform = null;
         target = blankTransform;
-        print("Target for " + gameObject.name + " should be unassigned" + "(" + target);
+        
     }
 }
