@@ -11,7 +11,7 @@ public class LaserPointerScript : MonoBehaviour {
         laserOrigin = gameObject.GetComponent<LineRenderer>();
 	}
 	
-	// Update is called once per frame
+	//Update is called once per frame
 	void FixedUpdate () {
         
         RaycastHit2D hitPoint = Physics2D.Raycast(transform.position, transform.parent.transform.up);
