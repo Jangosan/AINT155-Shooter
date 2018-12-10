@@ -6,13 +6,22 @@ using UnityEngine.Events;
 
 public class TerminalUIControls : MonoBehaviour {
     
+    //an array of the different terminal pages
     public GameObject[] terminalScreens;
-    private GameObject currentScreen;
+
+    //The index of the current screen that is active
+    private int currentScreen;
+
+    //the canvas containing the entire ui for the terminal
     public Canvas terminalUI;
+
+    //the transform of the startup screen canvas and the transform of the entire terminal ui
     public Transform mainScreen, terminalTrans;
-    private AudioSource terminalActivateSound;
+
+    private GameObject mainScreenBtn;
+
     private Animator logoAnimator, scanLinesAnimator;
-    public UnityEvent pause, unpause;
+    public UnityEvent startUp, shutDown;
     private AudioSource terminalOn;
 
 
@@ -21,7 +30,8 @@ public class TerminalUIControls : MonoBehaviour {
         terminalOn = gameObject.GetComponent<AudioSource>();
         terminalTrans = terminalUI.transform;
         terminalUI = transform.GetComponentInChildren<Canvas>();
-        terminalActivateSound = transform.GetComponent<AudioSource>();
+        mainScreenBtn = mainScreen.Find("Continue").gameObject;
+        mainScreenBtn.SetActive(false);
         terminalUI.enabled = false;
         mainScreen = gameObject.transform.Find("TerminalUI").Find("Main Screen");
         logoAnimator = mainScreen.Find("IRCLogo").GetComponent<Animator>();
@@ -69,55 +79,26 @@ public class TerminalUIControls : MonoBehaviour {
         }       
     }
 
-    //When the next button is clicked, the terminal transitions to the next screen
-    public void Next()
+    //When the next button is clicked, the terminal transitions to the next screen. +1 moves forwards, -1 moves backwards, other values can also be used to go to specific screens in the array
+    public void switchPage(int indexDirection)
     {
-        print("next!");
         for (int i = 0; i < terminalScreens.Length; i++)
         {
-            if (terminalScreens[i].activeSelf == true)
-            {               
-                if (i + 1 <= terminalScreens.Length - 1)
+            if (terminalScreens[i].activeSelf)
+            {
+                terminalScreens[i].SetActive(false);
+
+                if (i + indexDirection < terminalScreens.Length)
                 {
-                    i++;
-                    print(terminalScreens[i].name);
+                    currentScreen = i + indexDirection;
                 }
-                currentScreen = terminalScreens[i];
-                print(currentScreen.name);
-                currentScreen.SetActive(true);
                 
             }
-            else
-            {
-                terminalScreens[i].SetActive(false);
-            }
         }
+
+        terminalScreens[currentScreen].SetActive(true); 
 
         
-    }
-
-
-    //When the prev button is clicked, the terminal transitions to the previous screen
-    public void Prev()
-    {
-        print("prev!");
-        for (int i = 0; i < terminalScreens.Length; i++)
-        {
-            if (terminalScreens[i].activeSelf == true)
-            {
-                if(i - 1 >= 0)
-                {
-                    i--;
-                }
-                currentScreen = terminalScreens[i];
-                currentScreen.SetActive(true);
-                return;
-            }
-            else
-            {
-                terminalScreens[i].SetActive(false);
-            }
-        }
     }
 
     
@@ -129,13 +110,9 @@ public class TerminalUIControls : MonoBehaviour {
         {
 
             terminalOn.Play();
-            pause.Invoke();
+            startUp.Invoke();
             StartCoroutine(terminalStart());
-            Cursor.visible = true;
-            if (terminalActivateSound != null)
-            {
-                terminalActivateSound.Play();
-            }
+            
         }
 
     }
@@ -148,18 +125,14 @@ public class TerminalUIControls : MonoBehaviour {
         scanLinesAnimator.Play("ScanLines");
         logoAnimator.enabled = true;
         logoAnimator.Play("IRCLogoTerminalAnim");
-        StartCoroutine(goToFirstScreen());
-    }
-    //After the inital animation is finished, the first terminal screen will be loaded
-    IEnumerator goToFirstScreen()
-    {
-        print("Waiting");
-        yield return new WaitForSecondsRealtime(3.0f);        
-        Next();
+        yield return new WaitForSecondsRealtime(3.0f);
+        Cursor.visible = true;
+        mainScreenBtn.SetActive(true);
+
     }
     public void Exit()
     {
-        unpause.Invoke();
+        shutDown.Invoke();
         logoAnimator.Play("Idle");
         scanLinesAnimator.Play("Idle");
         terminalUI.enabled = false;
