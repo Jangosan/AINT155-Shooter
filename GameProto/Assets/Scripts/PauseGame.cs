@@ -16,7 +16,6 @@ public class PauseGame : MonoBehaviour {
 
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            print(gameObject.transform.GetChild(i).GetComponent<WeaponFiringController>());
             weaponScript[i] = gameObject.transform.GetChild(i).GetComponent<WeaponFiringController>();
 
         }
