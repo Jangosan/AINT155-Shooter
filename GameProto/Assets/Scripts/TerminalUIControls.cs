@@ -108,7 +108,6 @@ public class TerminalUIControls : MonoBehaviour {
         //if the player is within the trigger bounds and the player presses the interact button, the terminal ui will open and the appropriate sound will play
         if (collision.tag == "Player" && Input.GetButton("Interact") && !terminalUI.enabled)
         {
-
             terminalOn.Play();
             startUp.Invoke();
             StartCoroutine(terminalStart());
@@ -134,7 +133,6 @@ public class TerminalUIControls : MonoBehaviour {
     {
         shutDown.Invoke();
         logoAnimator.Play("Idle");
-        scanLinesAnimator.Play("Idle");
         terminalUI.enabled = false;
         
     }
