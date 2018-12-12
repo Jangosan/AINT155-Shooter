@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour {
 
-    public GameObject weapon;
+    public GameObject weaponToEquip;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.transform.SendMessage("equipWeapon", weapon);
+            collision.transform.SendMessage("equipWeapon", weaponToEquip);
             Destroy(gameObject);
         }
 

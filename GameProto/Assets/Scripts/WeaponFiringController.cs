@@ -53,16 +53,21 @@ public class WeaponFiringController : MonoBehaviour {
     //The current amount of amnunition in reserve
     public int currentReserve;
 
+    //The ui element for the reload text
     public Text reloadText;
+
+    //Does the weapon have an infinite clip
+    public bool infiniteClip = false;
+
 
 
     //ANIMATION VARIABLES----------------------------------------
 
-    //array used to store sprites for firing animation
-    public Sprite[] playerSprites;
+    ////array used to store sprites for firing animation (Currently obsolete)
+    //public Sprite[] playerSprites;
 
-    //stores the sprite renderer component of this game object, in this case the player sprite
-    SpriteRenderer PlayerSpriteRenderer;
+    //stores the sprite renderer component of this game object, in this case the player sprite (Currently obsolete)
+    //SpriteRenderer PlayerSpriteRenderer;
 
     //stores the sprite renderer component of the weapon
     SpriteRenderer WeaponSpriteRenderer;
@@ -77,11 +82,12 @@ public class WeaponFiringController : MonoBehaviour {
         //get the sprite renderer component from the weapon, which is a child of the player game object
         GameObject player;
         player = transform.parent.gameObject;
-        PlayerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        //PlayerSpriteRenderer = player.GetComponent<SpriteRenderer>();
 
+        reloadText = GameObject.Find("ReloadText").GetComponent<Text>();
         reloadText.enabled = false;
         
-        //1
+        
         loadClip(initAmmo);
 
         gameObject.SendMessage("setWeaponName", gameObject.name);
@@ -92,25 +98,36 @@ public class WeaponFiringController : MonoBehaviour {
     private void loadClip(int ammoAmount)
     {
 
-        //if the total amount of ammo is less than the amount in one clip
-        if (ammoAmount < clipMax)
+        if (infiniteClip != true)
         {
-            currentClip = ammoAmount;
-            currentReserve = 0;
+            //if the total amount of ammo is less than the amount in one clip
+            if (ammoAmount < clipMax)
+            {
+                currentClip = ammoAmount;
+                currentReserve = 0;
+            }
+            //if the clip is greater than 0
+            else if (currentClip > 0)
+            {
+                currentReserve = currentReserve + currentClip;
+                currentClip = clipMax;
+                currentReserve = ammoAmount - currentClip;
+            }
+
+            else
+            {
+                currentClip = clipMax;
+                currentReserve = ammoAmount - currentClip;
+            }
+
+            
         }
-        //if the clip is greater than 0
-        else if(currentClip > 0) {
-            currentReserve = currentReserve + currentClip;
-            currentClip = clipMax;
-            currentReserve = ammoAmount - currentClip;
-        }
-        
         else
         {
             currentClip = clipMax;
-            currentReserve = ammoAmount - currentClip;
+            currentReserve = ammoMax;
+            
         }
-
         updateUIAmmo();
     }
 
@@ -133,11 +150,11 @@ public class WeaponFiringController : MonoBehaviour {
         {
             reloadText.enabled = false;
             //makes sure the correct sprite is being used for the player and weapon
-            if (PlayerSpriteRenderer.sprite == playerSprites[1])
-            {
-                WeaponSpriteRenderer.sprite = playerSprites[2];
-                PlayerSpriteRenderer.sprite = playerSprites[0];
-            }
+            //if (PlayerSpriteRenderer.sprite == playerSprites[1])
+            //{
+            //    WeaponSpriteRenderer.sprite = playerSprites[2];
+            //    PlayerSpriteRenderer.sprite = playerSprites[0];
+            //}
        
             //Checks to see if the player can fire for single shot weapons, if they can, then isFiring is false
             if (singleShot && !waitIsRunning && !Input.GetButton("Fire1"))
@@ -160,12 +177,12 @@ public class WeaponFiringController : MonoBehaviour {
                     fire();
 
                 }
-                else
-                {
-                    WeaponSpriteRenderer.sprite = playerSprites[2];
-                    PlayerSpriteRenderer.sprite = playerSprites[0];
+                //else
+                //{
+                //    WeaponSpriteRenderer.sprite = playerSprites[2];
+                //    PlayerSpriteRenderer.sprite = playerSprites[0];
 
-                }
+                //}
 
 
             }
@@ -209,7 +226,10 @@ public class WeaponFiringController : MonoBehaviour {
                 
             }            
             StartCoroutine(waitBeforeFiring());
-            currentClip--;
+            if (!infiniteClip)
+                {
+                    currentClip--;
+                }           
             updateUIAmmo();
 
         if (!singleShot)

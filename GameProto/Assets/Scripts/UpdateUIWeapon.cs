@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class UpdateUIWeapon : MonoBehaviour {
 
-    //the health bar slider in the ui
-    public Text ammoClip;
-    public Text ammoReserve;
-    public Text weapName;
+    //The dynamic elements in the ui for the weapon
+    private Text ammoClip, weapName, ammoReserve;
 
+
+    private void Start()
+    {
+        Transform weaponInfoPanel = GameObject.FindGameObjectWithTag("AmmoUI").transform;
+        ammoClip = weaponInfoPanel.Find("AmmoClip").GetComponent<Text>();
+        ammoReserve = weaponInfoPanel.Find("AmmoReserve").GetComponent<Text>();
+        weapName = weaponInfoPanel.Find("WeaponName").GetComponent<Text>();
+    }
     public void setWeaponName(string name)
     {
         weapName.text = name;
