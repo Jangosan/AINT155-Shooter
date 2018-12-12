@@ -48,14 +48,14 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, new Vector2(gridSize.x, gridSize.y));
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position, new Vector2(gridSize.x, gridSize.y));
 
-        if (grid != null)
-        {
-            foreach()
-        }
-    }
+    //    if (grid != null)
+    //    {
+    //        foreach () ;
+    //    }
+    //}
 
 }

@@ -18,16 +18,17 @@ public class TerminalUIControls : MonoBehaviour {
     //the transform of the startup screen canvas and the transform of the entire terminal ui
     public Transform mainScreen, terminalTrans;
 
+    //the button on the main screen
     private GameObject mainScreenBtn;
 
+    //the animators for the main screen
     private Animator logoAnimator, scanLinesAnimator;
-    public UnityEvent startUp, shutDown;
-    private AudioSource terminalOn;
 
+    //the events for the startup and shutdown of the terminal
+    public UnityEvent startUp, shutDown;
 
     private void Start()
     {
-        terminalOn = gameObject.GetComponent<AudioSource>();
         terminalTrans = terminalUI.transform;
         terminalUI = transform.GetComponentInChildren<Canvas>();
         mainScreenBtn = mainScreen.Find("Continue").gameObject;
@@ -108,7 +109,6 @@ public class TerminalUIControls : MonoBehaviour {
         //if the player is within the trigger bounds and the player presses the interact button, the terminal ui will open and the appropriate sound will play
         if (collision.tag == "Player" && Input.GetButton("Interact") && !terminalUI.enabled)
         {
-            terminalOn.Play();
             startUp.Invoke();
             StartCoroutine(terminalStart());
             
@@ -134,6 +134,19 @@ public class TerminalUIControls : MonoBehaviour {
     public void Exit()
     {
         shutDown.Invoke();
+        for (int i = 0; i < terminalScreens.Length; i++)
+        {
+            if (terminalScreens[i].name == "Main Screen")
+            {
+                terminalScreens[i].SetActive(true);
+
+            }
+            else
+            {
+                terminalScreens[i].SetActive(false);
+            }
+        }
+        mainScreenBtn.SetActive(false);
         Cursor.visible = false;
         logoAnimator.Play("Idle");
         terminalUI.enabled = false;
