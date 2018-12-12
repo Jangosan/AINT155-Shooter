@@ -129,9 +129,12 @@ public class TerminalUIControls : MonoBehaviour {
         mainScreenBtn.SetActive(true);
 
     }
+
+
     public void Exit()
     {
         shutDown.Invoke();
+        Cursor.visible = false;
         logoAnimator.Play("Idle");
         terminalUI.enabled = false;
         
