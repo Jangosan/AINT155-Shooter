@@ -18,6 +18,8 @@ public class WeaponFiringController : MonoBehaviour {
 
     //ADJUSTABLE WEAPON PARAMETERS------------------------------
 
+    public string weaponName;
+
     //the number of projectile in one shot
     public int projectileCount;
 
@@ -63,12 +65,6 @@ public class WeaponFiringController : MonoBehaviour {
 
     //ANIMATION VARIABLES----------------------------------------
 
-    ////array used to store sprites for firing animation (Currently obsolete)
-    //public Sprite[] playerSprites;
-
-    //stores the sprite renderer component of this game object, in this case the player sprite (Currently obsolete)
-    //SpriteRenderer PlayerSpriteRenderer;
-
     //stores the sprite renderer component of the weapon
     SpriteRenderer WeaponSpriteRenderer;
 
@@ -90,9 +86,9 @@ public class WeaponFiringController : MonoBehaviour {
         
         loadClip(initAmmo);
 
-        gameObject.SendMessage("setWeaponName", gameObject.name);
+        gameObject.SendMessage("setWeaponName", weaponName);
        
-    }	
+    }
 
     //Handles loading of the clip and removing ammo from the reserve on reloads and inital load
     private void loadClip(int ammoAmount)
@@ -149,12 +145,6 @@ public class WeaponFiringController : MonoBehaviour {
         else
         {
             reloadText.enabled = false;
-            //makes sure the correct sprite is being used for the player and weapon
-            //if (PlayerSpriteRenderer.sprite == playerSprites[1])
-            //{
-            //    WeaponSpriteRenderer.sprite = playerSprites[2];
-            //    PlayerSpriteRenderer.sprite = playerSprites[0];
-            //}
        
             //Checks to see if the player can fire for single shot weapons, if they can, then isFiring is false
             if (singleShot && !waitIsRunning && !Input.GetButton("Fire1"))
@@ -171,20 +161,11 @@ public class WeaponFiringController : MonoBehaviour {
                 //if lmb is pressed and the gun is not already firing, the weapon is fired, also switches the sprite when the player fires the weapon
                 if (!isFiring)
                 {
-
-                    //WeaponSpriteRenderer.sprite = playerSprites[3];
-                    //PlayerSpriteRenderer.sprite = playerSprites[1];
+                  
                     fire();
 
                 }
-                //else
-                //{
-                //    WeaponSpriteRenderer.sprite = playerSprites[2];
-                //    PlayerSpriteRenderer.sprite = playerSprites[0];
-
-                //}
-
-
+               
             }
         }
 	}
@@ -241,8 +222,6 @@ public class WeaponFiringController : MonoBehaviour {
 
             
     }
-
-
 
     private void setFiring()
     {       

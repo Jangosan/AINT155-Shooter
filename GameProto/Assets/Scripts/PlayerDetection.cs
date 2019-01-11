@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class OnDetectionEvent : UnityEvent<Transform> { }
 
 public class PlayerDetection : MonoBehaviour {
 
-    public float losePlayerTime = 2.5f;
+    public float losePlayerTime = 1.0f;
 
     //The layers for the raycast to interact with
     public LayerMask mask;
@@ -21,7 +25,10 @@ public class PlayerDetection : MonoBehaviour {
     //The collider of the player
     private Collider2D playerCollider;
 
-    
+    //The event that is triggered when the player is detected
+    public OnDetectionEvent onDetection;
+
+
 
     //Assigns the values for the two above variables
 	void Start () {
@@ -37,6 +44,8 @@ public class PlayerDetection : MonoBehaviour {
 
     }
 
+
+    //If the character has a target, it will raycast towards the player to see if they are still visible. If not, a count down will begin, after which the player will be lost.
     private void Update()
     {
         
@@ -71,7 +80,8 @@ public class PlayerDetection : MonoBehaviour {
         {
             if (gameObject.transform.GetChild(i).tag == "Enemy")
             {
-                gameObject.transform.GetChild(i).SendMessage("AssignTarget", player.transform);
+                print("Target assigned");
+                gameObject.transform.GetChild(i).SendMessage("SetTarget", player.transform);
 
             }
 
@@ -97,11 +107,9 @@ public class PlayerDetection : MonoBehaviour {
                 //cast a ray in the direction of the player and if it collides with the player set the target to the player
                 RaycastHit2D findPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, 5, mask);
                 Debug.DrawRay(transform.position, player.transform.position - transform.position);
-               
                 if (findPlayer.collider == playerCollider)
-                {                    
-                    
-                    parentCharacter.SendMessage("AssignTarget", target.transform, SendMessageOptions.DontRequireReceiver);
+                {                   
+                    onDetection.Invoke(player.transform);
                     hasTarget = true;
                     
                 }
@@ -123,7 +131,7 @@ public class PlayerDetection : MonoBehaviour {
         
         if (target.transform.tag == "Enemy" && hasTarget == true)
         {
-            target.SendMessage("AssignTarget", player.transform, SendMessageOptions.DontRequireReceiver);
+            onDetection.Invoke(player.transform);
         }
 
     }
@@ -136,14 +144,14 @@ public class PlayerDetection : MonoBehaviour {
         yield return new WaitForSeconds(losePlayerTime);
         if (!hasTarget)
         {
-            
-            parentCharacter.SendMessage("UnassignTarget");
+
+            onDetection.Invoke(null);
         }
     }
     //For event dependent target assigning instead of based off the detection range
     public void assignTargetOnEvent()
-    {      
-        gameObject.SendMessage("AssignTarget", player.transform, SendMessageOptions.DontRequireReceiver);
+    {
+        onDetection.Invoke(player.transform);
         hasTarget = true;
     }
 

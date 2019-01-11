@@ -340,7 +340,7 @@ MonoBehaviour:
   numberToSpawn: 2
   spawnDelay: 2
   adjustmentAngle: 0
-  prefabToSpawn: {fileID: 1203211086674550, guid: 6c10a39f6794dd049beb4f43590d8b27,
+  prefabToSpawn: {fileID: 1961243078438044, guid: 281d93be7c5a5ef4c9be7f7eeaac9fca,
     type: 2}
   maxSpawnDist: 1
 --- !u!114 &114645604950640082
@@ -366,6 +366,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024737f8ed137604abb07789363604d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  losePlayerTime: 2.5
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  hasTarget: 0
+  onDetection:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnDetectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114982162883444238
 MonoBehaviour:
   m_ObjectHideFlags: 1

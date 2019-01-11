@@ -10,19 +10,23 @@ public class IsMovingCheck : MonoBehaviour {
     //The rigidbody of the game object
     public Rigidbody2D objRgdBdy;
 
-	//Assign the animator and rigidbody
-	void Start () {
+    private Vector2 oldPos;
+
+    //Assign the animator and rigidbody
+    void Start () {
         moveAnim = GetComponent<Animator>();
-        objRgdBdy = GetComponent<Rigidbody2D>();        
+        objRgdBdy = GetComponent<Rigidbody2D>();
+        oldPos = transform.position;
 	}
 	
 	
     //If the rigidbody is moving then the isMoving parameter = true
 	void Update () {
-        
-		if(objRgdBdy.velocity.magnitude > 0)
+
+        if(objRgdBdy.position != oldPos)
         {
             moveAnim.SetBool("isMoving", true);
+            oldPos = objRgdBdy.position;
         }
         else
         {

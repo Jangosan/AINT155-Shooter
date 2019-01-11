@@ -17,21 +17,30 @@ public class PickupAmmo : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //sends a message to the equipped weapon of the player to return the clip size, max ammo and current ammo
-        collision.transform.GetChild(0).SendMessage("returnAmmoInfo", gameObject);
+        for(int i = 0; i < collision.transform.childCount; i++)
+        {
+            //if the child is active
+            if (collision.transform.GetChild(i).gameObject.activeSelf)
+            {
+                //sends a message to the equipped weapon of the player to return the clip size, max ammo and current ammo
+                collision.transform.GetChild(i).SendMessage("returnAmmoInfo", gameObject);
 
-        //if the amount of ammo supplied by the pickup would go over the maximum amount for the weapon, the amount needed to get to max is subtracted from the amount in the pickup but the pickup isn't destroyed
-        if (currentAmmo + ammoAmount > maxAmmo)
-        {
-            collision.transform.GetChild(0).SendMessage("pickupRestoreAmmo", (maxAmmo - currentAmmo));
-            ammoAmount = ammoAmount - (maxAmmo - currentAmmo);
+                //if the amount of ammo supplied by the pickup would go over the maximum amount for the weapon, the amount needed to get to max is subtracted from the amount in the pickup but the pickup isn't destroyed
+                if (currentAmmo + ammoAmount > maxAmmo)
+                {
+                    collision.transform.GetChild(i).SendMessage("pickupRestoreAmmo", (maxAmmo - currentAmmo));
+                    ammoAmount = ammoAmount - (maxAmmo - currentAmmo);
+                }
+                //the pickup is destroyed and any ammo in it is supplied to the player
+                else
+                {
+                    collision.transform.GetChild(i).SendMessage("pickupRestoreAmmo", (ammoAmount));
+                    Destroy(gameObject);
+                }
+            }
+            
         }
-        //the pickup is destroyed and any ammo in it is supplied to the player
-        else
-        {
-            collision.transform.GetChild(0).SendMessage("pickupRestoreAmmo", (ammoAmount));
-            Destroy(gameObject);
-        }
+        
 
     }
 

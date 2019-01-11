@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114789846863675986}
   m_Layer: 9
   m_Name: Shotgun
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   m_Layer: 15
   m_Name: LaserStart
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -173,7 +173,7 @@ GameObject:
   m_Layer: 15
   m_Name: EndPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -527,6 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFiring: 0
   waitIsRunning: 0
+  weaponName: Shotgun
   projectileCount: 8
   weaponSpread: 6
   bulletPrefab: {fileID: 1072768933441656, guid: ea03ba7332c32374fa0361d2537f407a,
@@ -541,11 +542,6 @@ MonoBehaviour:
   currentReserve: 0
   reloadText: {fileID: 0}
   infiniteClip: 0
-  playerSprites:
-  - {fileID: 21300000, guid: d2a190d8dbe1f9e4383a068f77eac127, type: 3}
-  - {fileID: 21300002, guid: d2a190d8dbe1f9e4383a068f77eac127, type: 3}
-  - {fileID: 21300000, guid: b3da4a7ce5401904aa99378fdae75682, type: 3}
-  - {fileID: 21300002, guid: b3da4a7ce5401904aa99378fdae75682, type: 3}
 --- !u!114 &114789846863675986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -557,9 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4f84c02d9cf5e4ebbb889a69978cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoClip: {fileID: 0}
-  ammoReserve: {fileID: 0}
-  weapName: {fileID: 0}
+  onEnableWeaponValues: {fileID: 0}
 --- !u!114 &114834422026682812
 MonoBehaviour:
   m_ObjectHideFlags: 1
