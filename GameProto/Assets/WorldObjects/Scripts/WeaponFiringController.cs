@@ -193,12 +193,12 @@ public class WeaponFiringController : MonoBehaviour {
                 //to evenly spread the projectiles, half are rotated less than 0 degrees and half are rotated more than 0 degrees
                 if (i < (projectileCount - (projectileCount * 0.5)))
                 {
-                    rotationAdjust = -Random.Range(0, weaponSpread);                
+                    rotationAdjust = -Random.Range(-weaponSpread, weaponSpread);                
                     angleAdjust = Quaternion.Euler(0, 0, rotationAdjust);
             }
                 else
                 {
-                    rotationAdjust = Random.Range(0, weaponSpread);
+                    rotationAdjust = Random.Range(-weaponSpread, weaponSpread);
                     angleAdjust = Quaternion.Euler(0, 0, rotationAdjust);
             }
 

@@ -147,7 +147,7 @@ public class TerminalUIControls : MonoBehaviour {
             }
         }
         mainScreenBtn.SetActive(false);
-        Cursor.visible = false;
+        //Cursor.visible = false;
         logoAnimator.Play("Idle");
         terminalUI.enabled = false;
         

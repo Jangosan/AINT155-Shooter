@@ -9,6 +9,7 @@ TagManager:
   - TerminalScreen
   - AmmoUI
   - Weapon
+  - HealthBar
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class ControlPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        Cursor.visible = false;
+        //Cursor.visible = false;
         //Identify the rigidbody component to be stored
         player = gameObject.GetComponent<Rigidbody2D>();     
         

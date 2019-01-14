@@ -39,7 +39,7 @@ public class PauseGame : MonoBehaviour {
     //Start game operation
     public void startGame()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Time.timeScale = 1;
 
         playerControlScript.enabled = true;
