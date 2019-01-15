@@ -479,6 +479,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 1468151491918582, guid: 691752bac01bd764ba5fefffdf65672c,
     type: 2}
   spawnInterval: 0
+  spawnAmount: 1
   adjustmentAngle: 0
 --- !u!114 &114127694257942090
 MonoBehaviour:
@@ -589,7 +590,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  speed: 1
+  speed: 1.52
   orientation: 1
   enableRotation: 1
   rotationSpeed: 10
