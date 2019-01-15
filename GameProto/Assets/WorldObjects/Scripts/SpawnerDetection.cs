@@ -20,11 +20,11 @@ public class SpawnerDetection : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-        active = false;    
+    {               
+            active = false;                
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform == player.transform)
         {   
@@ -35,7 +35,7 @@ public class SpawnerDetection : MonoBehaviour {
                     {
                         if (!active)
                         {
-                            spawnerList[i].SendMessage("beginSpawn");
+                            spawnerList[i].SendMessage("beginSpawn", SendMessageOptions.DontRequireReceiver);
                         }
                         
                         spawnerList[i].SendMessage("assignTargetForChildren", player, SendMessageOptions.DontRequireReceiver);

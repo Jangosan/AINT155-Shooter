@@ -1164,7 +1164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4777037575049904, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114572787448001958, guid: 0896e7a62b9be3f498c548887bbd97b8,
         type: 2}
@@ -3081,15 +3081,15 @@ Prefab:
     - target: {fileID: 114768581290740734, guid: 4d493cddf89728548a50fd7826ebaecf,
         type: 2}
       propertyPath: spawnerList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4883182536540484, guid: 4d493cddf89728548a50fd7826ebaecf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.5795574
+      value: 4.77
       objectReference: {fileID: 0}
     - target: {fileID: 4883182536540484, guid: 4d493cddf89728548a50fd7826ebaecf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: -3.77
       objectReference: {fileID: 0}
     - target: {fileID: 4883182536540484, guid: 4d493cddf89728548a50fd7826ebaecf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3118,12 +3118,12 @@ Prefab:
     - target: {fileID: 61601257063787300, guid: 4d493cddf89728548a50fd7826ebaecf,
         type: 2}
       propertyPath: m_Size.x
-      value: 6.99
+      value: 20.56
       objectReference: {fileID: 0}
     - target: {fileID: 61601257063787300, guid: 4d493cddf89728548a50fd7826ebaecf,
         type: 2}
       propertyPath: m_Size.y
-      value: 12.8
+      value: 11.66
       objectReference: {fileID: 0}
     - target: {fileID: 114768581290740734, guid: 4d493cddf89728548a50fd7826ebaecf,
         type: 2}
@@ -3760,7 +3760,7 @@ Prefab:
     - target: {fileID: 114982162883444238, guid: 0896e7a62b9be3f498c548887bbd97b8,
         type: 2}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: spawn
+      value: Die
       objectReference: {fileID: 0}
     - target: {fileID: 114572787448001958, guid: 0896e7a62b9be3f498c548887bbd97b8,
         type: 2}
@@ -4376,21 +4376,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4777037575049904, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1812192786250276, guid: 0896e7a62b9be3f498c548887bbd97b8, type: 2}
       propertyPath: m_Name
       value: SpiderSpawner (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114572787448001958, guid: 0896e7a62b9be3f498c548887bbd97b8,
-        type: 2}
-      propertyPath: maxToSpawn
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114572787448001958, guid: 0896e7a62b9be3f498c548887bbd97b8,
-        type: 2}
-      propertyPath: spawnDelay
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224716211273533294, guid: 0896e7a62b9be3f498c548887bbd97b8,
         type: 2}

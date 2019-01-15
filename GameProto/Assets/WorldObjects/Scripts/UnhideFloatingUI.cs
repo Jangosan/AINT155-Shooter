@@ -13,4 +13,9 @@ public class UnhideFloatingUI : MonoBehaviour {
     {
         floatingUI.enabled = true;
     }
+
+    public void hideUI()
+    {
+        floatingUI.enabled = false;
+    }
 }

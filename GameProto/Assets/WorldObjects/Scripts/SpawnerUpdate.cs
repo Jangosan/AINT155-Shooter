@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawnerUpdate : MonoBehaviour {
 
+    public UnityEvent OnSpawnEnemy;
 
     //The maximum number of enemies to spawn
     public int maxToSpawn;
@@ -61,6 +63,7 @@ public class SpawnerUpdate : MonoBehaviour {
 
         if (totalPrefabs < maxToSpawn)
         {
+            OnSpawnEnemy.Invoke();
             Instantiate(prefabToSpawn, spawnPosition, rotationInRadians, transform);
         }
         
