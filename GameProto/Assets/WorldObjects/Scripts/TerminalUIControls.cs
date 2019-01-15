@@ -151,5 +151,6 @@ public class TerminalUIControls : MonoBehaviour {
         logoAnimator.Play("Idle");
         terminalUI.enabled = false;
         
+        
     }
 }

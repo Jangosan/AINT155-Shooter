@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 212978331619004162}
   - component: {fileID: 114497831039132848}
   - component: {fileID: 114939067736588522}
-  - component: {fileID: 82832629503105200}
+  - component: {fileID: 82503643836058334}
   m_Layer: 9
   m_Name: Pistol
   m_TagString: Untagged
@@ -185,7 +185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4024931907406170
 Transform:
   m_ObjectHideFlags: 1
@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164308035662954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.019, y: 0.5917, z: 0}
+  m_LocalPosition: {x: -0.019, y: 0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4406468359121306}
@@ -360,7 +360,7 @@ CircleCollider2D:
   m_Offset: {x: -0.08, y: -0.16}
   serializedVersion: 2
   m_Radius: 0.42
---- !u!82 &82832629503105200
+--- !u!82 &82503643836058334
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -369,10 +369,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 09d21c3abf94e684e961064c8da49b30, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f7abedb2df44f234fa0da0df75e47dce, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.143
-  m_Pitch: 0.49
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -445,7 +445,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

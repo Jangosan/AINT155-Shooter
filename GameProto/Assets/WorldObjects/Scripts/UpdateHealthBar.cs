@@ -12,6 +12,7 @@ public class UpdateHealthBar : MonoBehaviour {
 
     public void Start()
     {
+        if(healthBar == null)
         healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Slider>();
     }
 

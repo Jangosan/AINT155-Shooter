@@ -80,7 +80,8 @@ public class PlayerDetection : MonoBehaviour {
         {
             if (gameObject.transform.GetChild(i).tag == "Enemy")
             {
-                print("Target assigned");
+                
+
                 gameObject.transform.GetChild(i).SendMessage("SetTarget", player.transform);
 
             }

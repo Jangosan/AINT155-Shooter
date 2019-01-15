@@ -8,10 +8,17 @@ public class PauseGame : MonoBehaviour {
     public WeaponFiringController[] weaponScript;
 
 
-    //locate the scripts that have to be stopped
+
     private void Start()
     {
         Time.timeScale = 1;
+        countWeapons();
+    }
+
+    //locate the scripts that have to be stopped
+    private void countWeapons()
+    {
+        
         weaponScript = new WeaponFiringController[gameObject.transform.childCount];
 
         for (int i = 0; i < gameObject.transform.childCount; i++)
@@ -25,6 +32,7 @@ public class PauseGame : MonoBehaviour {
     //Stop game operation
     public void stopGame()
     {
+        countWeapons();
         Cursor.visible = true;
         Time.timeScale = 0;
 
@@ -39,6 +47,8 @@ public class PauseGame : MonoBehaviour {
     //Start game operation
     public void startGame()
     {
+        countWeapons();
+        
         //Cursor.visible = false;
         Time.timeScale = 1;
 
