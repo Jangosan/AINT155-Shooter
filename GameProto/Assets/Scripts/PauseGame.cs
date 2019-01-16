@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour {
 
     public ControlPlayer playerControlScript;
     public WeaponFiringController[] weaponScript;
+    public GameObject pauseMenu;
 
 
 
@@ -13,6 +15,23 @@ public class PauseGame : MonoBehaviour {
     {
         Time.timeScale = 1;
         countWeapons();
+        if(gameObject.tag == "Player")
+        {
+            pauseMenu = GameObject.Find("PausemenuContainer");
+            pauseMenu.SetActive(false);
+        }
+        
+    }
+
+    private void Update()
+    {
+        
+        if(Input.GetKey("escape") && pauseMenu != null) 
+        {
+              pauseMenu.SetActive(true);
+              stopGame();
+                                
+        }
     }
 
     //locate the scripts that have to be stopped
