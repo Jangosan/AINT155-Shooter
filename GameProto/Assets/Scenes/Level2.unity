@@ -25968,6 +25968,11 @@ Prefab:
       propertyPath: m_Name
       value: NerveSpiderPathfinding (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114109027264802912, guid: 281d93be7c5a5ef4c9be7f7eeaac9fca,
+        type: 2}
+      propertyPath: adjustmentAngle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 281d93be7c5a5ef4c9be7f7eeaac9fca, type: 2}
   m_IsPrefabParent: 0
