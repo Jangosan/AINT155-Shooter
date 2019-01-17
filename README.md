@@ -13,8 +13,8 @@ Module - AINT 155
 Assignment title - Unity 2D Zombie Shooter
 
 Instructions for usage - 
-- Extract build from archive
-- Run OutbreakAlpha.exe
+- Extract build from archive (if downloaded as an archive)
+- Run Outbreak.exe
 
 References
 
